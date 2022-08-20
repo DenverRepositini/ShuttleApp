@@ -4,9 +4,10 @@ import { Link } from "react-router-dom"
 const WorkShuttle = () => {
     return (
         <div>
-            <div className=''>
+            <h3 className=''>
                 Work Trips
-            </div>
+            </h3>
+            <ul></ul>
         </div>
     );
 }

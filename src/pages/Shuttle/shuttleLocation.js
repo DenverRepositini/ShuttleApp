@@ -58,8 +58,9 @@ class ShuttleLocation extends React.Component {
   }
   render(){
     if (this.state.currentLocation !== null) {
-      if (this.state.currentLocation !== 'Location not found') {
+      if (this.state.currentLocation !== 'Location unknown') {
          return (
+          // Returns Shuttle location if coordinates not null
           <div style={{ height: '80vh', width: '80%' }}>
             <button onClick={this.pingShuttle}>PING SHUTTLE</button>
             <GoogleMapReact
@@ -77,7 +78,25 @@ class ShuttleLocation extends React.Component {
         )
       } else {
         return (
-          <div> Location not found</div>
+          <>
+          {/* Default map if shuttle location not found */}
+            <div> Shuttle location not found</div>
+            <button onClick={this.pingShuttle}>PING SHUTTLE</button>
+            <div style={{ height: '80vh', width: '80%' }}>
+            <GoogleMapReact
+              bootstrapURLKeys={{ key: mapsKey }}
+              defaultCenter={defaultProps.center}
+              defaultZoom= {15}
+            >
+              <Coordinates         
+                lat={defaultProps.center.lat}
+                lng={defaultProps.center.lng}
+                text="" 
+              />
+            </GoogleMapReact>
+          </div>
+          </>
+          
         )
       }
     } else {
