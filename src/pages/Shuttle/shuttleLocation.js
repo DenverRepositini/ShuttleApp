@@ -1,4 +1,3 @@
-import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import React from 'react';
 import axios from 'axios';
 import GoogleMapReact from 'google-map-react';
@@ -9,11 +8,11 @@ const baseUrl = 'http://localhost:8080'
 
 const Coordinates = ({ text }) => <div>{text}</div>;
 const defaultProps = {
-    // center: {
-    //   lat: 10.99835602,
-    //   lng: 77.01502627
-    // },
-    zoom: 11
+    center: {
+      "lat" : 51.425369,
+      "lng": -116.177254
+    },
+    zoom: 15  
   };
 
 class ShuttleLocation extends React.Component {
@@ -23,6 +22,24 @@ class ShuttleLocation extends React.Component {
       currentLocation: null
     };
   }
+
+  pingShuttle = (e) => {
+    e.preventDefault();
+    axios.get(`${baseUrl}/shuttle/pingshuttle`)
+    .then(res => {
+      console.log(res);
+      this.setState({
+        currentLocation: res.data
+      })
+      window.location.reload();
+    })
+    .catch(err => {
+      this.setState({
+        currentLocation: 'Request failed'
+      })
+      console.log(err);
+    })
+}
   
   componentDidMount(){
     axios.get(`${baseUrl}/shuttle/pingshuttle`)
@@ -43,16 +60,17 @@ class ShuttleLocation extends React.Component {
     if (this.state.currentLocation !== null) {
       if (this.state.currentLocation !== 'Location not found') {
          return (
-          <div style={{ height: '100vh', width: '100%' }}>
+          <div style={{ height: '80vh', width: '80%' }}>
+            <button onClick={this.pingShuttle}>PING SHUTTLE</button>
             <GoogleMapReact
               bootstrapURLKeys={{ key: mapsKey }}
-              defaultCenter={this.state.currentLocation.location}
-              defaultZoom={defaultProps.zoom}
+              defaultCenter={defaultProps.center}
+              defaultZoom= {15}
             >
-              <Coordinates
+              <Coordinates         
                 lat={this.state.currentLocation.location.lat}
                 lng={this.state.currentLocation.location.lng}
-                text="Shuttle Location"
+                text="Shuttle Location" 
               />
             </GoogleMapReact>
           </div>
@@ -68,10 +86,8 @@ class ShuttleLocation extends React.Component {
           Location loading
         </div>
       )
-    }
-    
+    } 
   }
- 
 }
 
 export default ShuttleLocation;
