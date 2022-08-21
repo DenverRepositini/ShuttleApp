@@ -6,6 +6,7 @@ import ShuttleLocation from './pages/Shuttle/shuttleLocation';
 import HomePage from './pages/home';
 import WorkShuttle from './pages/Shuttle/workShuttle';
 import GroceryShuttle from './pages/Shuttle/groceryShuttle';
+import Driver from './pages/Shuttle/driver';
 
 class App extends React.Component {
   render (){
@@ -19,6 +20,7 @@ class App extends React.Component {
             <Route path='/workshuttle' component={WorkShuttle}/>
             <Route path='/groceryshuttle' component={GroceryShuttle}/>
             <Route path='/shuttlelocation' component={ShuttleLocation}/>
+            <Route path='/driver' component={Driver}/>
           </Switch>
         </div>
       </BrowserRouter>
