@@ -1,12 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import GoogleMapReact from 'google-map-react';
+import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
 
 const mapsKey = 'AIzaSyB7iTcMNo0Ju4-JOzrIAkAFz5RIbgN1eM8'
 const baseUrl = 'http://localhost:8080'
 
 
-const Coordinates = ({ text }) => <div>{text}</div>;
+const Coordinates = () => <div> <AirportShuttleIcon fontSize='large' /> </div>;
 const defaultProps = {
     center: {
       "lat" : 51.425369,
@@ -63,6 +64,7 @@ class ShuttleLocation extends React.Component {
           // Returns Shuttle location if coordinates not null
           <div style={{ height: '80vh', width: '80%' }}>
             <button onClick={this.pingShuttle}>PING SHUTTLE</button>
+            <div>Last seen:{this.state.currentLocation.lastSeen}</div>
             <GoogleMapReact
               bootstrapURLKeys={{ key: mapsKey }}
               defaultCenter={defaultProps.center}
@@ -71,7 +73,7 @@ class ShuttleLocation extends React.Component {
               <Coordinates         
                 lat={this.state.currentLocation.location.lat}
                 lng={this.state.currentLocation.location.lng}
-                text="Shuttle Location" 
+                text='shuttle' 
               />
             </GoogleMapReact>
           </div>
