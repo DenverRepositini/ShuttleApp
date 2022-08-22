@@ -16,6 +16,7 @@ const defaultProps = {
     zoom: 15  
   };
 
+  
 class ShuttleLocation extends React.Component {
   constructor(props){
     super(props);
@@ -40,7 +41,7 @@ class ShuttleLocation extends React.Component {
       })
       console.log(err);
     })
-}
+  }
   
   componentDidMount(){
     axios.get(`${baseUrl}/shuttle/pingshuttle`)
@@ -67,13 +68,13 @@ class ShuttleLocation extends React.Component {
             <div>Last seen:{this.state.currentLocation.lastSeen}</div>
             <GoogleMapReact
               bootstrapURLKeys={{ key: mapsKey }}
-              defaultCenter={defaultProps.center}
+              defaultCenter={this.state.currentLocation.location}
               defaultZoom= {15}
             >
               <Coordinates         
                 lat={this.state.currentLocation.location.lat}
                 lng={this.state.currentLocation.location.lng}
-                text='shuttle' 
+                
               />
             </GoogleMapReact>
           </div>
@@ -90,11 +91,7 @@ class ShuttleLocation extends React.Component {
               defaultCenter={defaultProps.center}
               defaultZoom= {15}
             >
-              <Coordinates         
-                lat={defaultProps.center.lat}
-                lng={defaultProps.center.lng}
-                text="" 
-              />
+
             </GoogleMapReact>
           </div>
           </>
