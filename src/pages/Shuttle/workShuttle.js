@@ -37,6 +37,7 @@ class WorkShuttle extends React.Component {
                             <p>{data.name}</p>
                             <p>{data.location}</p>
                             <p>{data.time}</p>
+                            <button>Delete</button>
                         </li>
                     );   
                 }):<div>Loading trips</div>}
