@@ -68,7 +68,7 @@ class GroceryShuttle extends React.Component {
         return (
             <div>
             <h3 className=''>Grocery Trips</h3>
-            <ul>
+            <ul> 
                 {this.state.trips !== null ? this.state.trips.map((data) => {
                     return (
                         <li key={data.id}>

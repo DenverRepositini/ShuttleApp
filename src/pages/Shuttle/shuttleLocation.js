@@ -3,7 +3,7 @@ import axios from 'axios';
 import GoogleMapReact from 'google-map-react';
 import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
 
-const mapsKey = 'AIzaSyB7iTcMNo0Ju4-JOzrIAkAFz5RIbgN1eM8'
+const mapsKey = process.env.REACT_APP_MAPSKEY
 const baseUrl = 'http://localhost:8080'
 
 

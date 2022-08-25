@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Link } from "react-router-dom"
 
 const baseUrl = 'http://localhost:8080'
+const worktripsUrl = '/shuttle/worktrips';
+
 
 class WorkShuttle extends React.Component {
     constructor(props){
@@ -11,9 +13,31 @@ class WorkShuttle extends React.Component {
             trips: null
         }
       }
+      
+      deleteUser(id) {
+        axios.delete(`${baseUrl}${worktripsUrl}/${id}`)
+        .then(res => {
+            axios.get(`${baseUrl}${worktripsUrl}`)
+            .then(res => {
+            console.log(res);
+            this.setState({
+                trips: res.data
+            })})
+            .catch(err => {
+            this.setState('Data not found')
+            console.log(err);
+          })
+
+            console.log(res);
+        })
+        .catch (err => {
+            console.log(err);
+            window.alert('User not found')
+        })}
+
 
       componentDidMount(){
-        axios.get(`${baseUrl}/shuttle/worktrips`)
+        axios.get(`${baseUrl}${worktripsUrl}`)
         .then(res => {
             console.log(res);
             this.setState({
@@ -37,7 +61,7 @@ class WorkShuttle extends React.Component {
                             <p>{data.name}</p>
                             <p>{data.location}</p>
                             <p>{data.time}</p>
-                            <button>Delete</button>
+                            <button onClick={()=> this.deleteUser(data.id)} >Delete</button>
                         </li>
                     );   
                 }):<div>Loading trips</div>}
