@@ -8,7 +8,7 @@ class Signup extends React.Component {
         this.state = {
             name: null,
             email: null,
-            location: null,
+            location: undefined,
             password: null
     };
 
@@ -65,13 +65,27 @@ class Signup extends React.Component {
                     onChange={this.handleInputChange}
                     required>
                     </input>
-                    <label>Location</label>
-                    <input type="text" name="location" className="login_location" 
+                    <label>Location
+                        <select
+                        name='location'
+                        className="login_location" 
+                        id="location"
+                        value={this.state.location} 
+                        onChange={this.handleInputChange}
+                        required>
+                            <option defaultValue={null} ></option>
+                            <option value= 'aframes'>A-Frames</option>
+                            <option value = 'chucktown'>Chucktown</option>
+                            <option value = 'moraine'>Moraine</option>
+                        </select>
+                    </label>
+                    {/* <input type="text" name="location" 
+                    className="login_location" 
                     id="location"
                     placeholder="Residence Locatioin"
                     onChange={this.handleInputChange}
                     required>
-                    </input>
+                    </input> */}
                     <label>Password</label>
                     <input type="password" name="password" className="login_password" 
                     id="password"
