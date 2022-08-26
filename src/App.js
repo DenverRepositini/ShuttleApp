@@ -7,6 +7,8 @@ import HomePage from './pages/home';
 import WorkShuttle from './pages/Shuttle/workShuttle';
 import GroceryShuttle from './pages/Shuttle/groceryShuttle';
 import Driver from './pages/Shuttle/driver';
+import Login from './pages/login';
+import Signup from './pages/signup';
 
 class App extends React.Component {
   render (){
@@ -15,6 +17,7 @@ class App extends React.Component {
         <div className='App'>
           <Header/>
           <Switch>
+            <Route path='/signup' component={Signup}/>
             <Route path='/login' component={Login} /> 
             <Route path='/' exact component={HomePage} />
             <Route path='/workshuttle' component={WorkShuttle}/>
