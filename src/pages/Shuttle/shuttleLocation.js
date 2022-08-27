@@ -1,7 +1,11 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import GoogleMapReact from 'google-map-react';
 import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
+import PhoneIcon from '@mui/icons-material/Phone';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import './shuttleLocation.scss'
 
 const mapsKey = process.env.REACT_APP_MAPSKEY
 const baseUrl = 'http://localhost:8080'
@@ -63,9 +67,15 @@ class ShuttleLocation extends React.Component {
       if (this.state.currentLocation !== 'Location unknown') {
          return (
           // Returns Shuttle location if coordinates not null
-          <div style={{ height: '80vh', width: '80%' }}>
-            <button onClick={this.pingShuttle}>PING SHUTTLE</button>
-            <div>Last seen:{this.state.currentLocation.lastSeen}</div>
+          <div className='ping'>
+          <button className='ping__button' onClick={this.pingShuttle}>
+            <div className='ping__call'>
+              <LocationOnIcon/>
+              PING SHUTTLE
+            </div>
+           </button>
+          <div>Last seen: {this.state.currentLocation.lastSeen}</div>
+          <div className='ping__map' style={{ height: '60vh', width: '80%' }}>  
             <GoogleMapReact
               bootstrapURLKeys={{ key: mapsKey }}
               defaultCenter={this.state.currentLocation.location}
@@ -78,14 +88,28 @@ class ShuttleLocation extends React.Component {
               />
             </GoogleMapReact>
           </div>
+          <a className='ping__phone' href="tel:+15555551212">
+            <div className='ping__call' >
+              <PhoneIcon>
+              </PhoneIcon>
+                CALL SHUTTLE
+            </div>
+           </a>
+          </div>
         )
       } else {
         return (
           <>
           {/* Default map if shuttle location not found */}
-            <div> Shuttle location not found</div>
-            <button onClick={this.pingShuttle}>PING SHUTTLE</button>
-            <div style={{ height: '80vh', width: '80%' }}>
+            <div className='status' > Shuttle location not found</div>
+            <div className='ping' >
+            <button className='ping__button' onClick={this.pingShuttle}>
+            <div className='ping__call'>
+              <LocationOnIcon/>
+              PING SHUTTLE
+            </div>
+            </button>
+            <div className='ping__map' style={{ height: '60vh', width: '80%' }}>
             <GoogleMapReact
               bootstrapURLKeys={{ key: mapsKey }}
               defaultCenter={defaultProps.center}
@@ -93,6 +117,14 @@ class ShuttleLocation extends React.Component {
             >
 
             </GoogleMapReact>
+          </div>
+          <a className='ping__phone' href="tel:+15555551212">
+            <div className='ping__call'>
+              <PhoneIcon>
+              </PhoneIcon>
+               CALL SHUTTLE
+            </div>
+           </a>
           </div>
           </>
           

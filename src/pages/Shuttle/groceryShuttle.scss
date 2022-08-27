@@ -2,7 +2,7 @@ p{
     margin: 0;
 }
 
-.work{
+.grocery{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,7 +48,7 @@ p{
 }
 
 
-.addUser{
+.addGrocery{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,10 +70,6 @@ p{
             }
 
             &__location{
-                padding: 10px;
-            }
-            
-            &__time{
                 padding: 10px;
             }
         }

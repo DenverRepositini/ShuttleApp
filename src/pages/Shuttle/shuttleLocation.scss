@@ -1,0 +1,46 @@
+.status{
+    text-align: center;
+    margin-top: 16px;
+}
+
+.ping{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    row-gap: 15px;
+
+    &__button{
+        color: white;
+        background-color: black;
+        padding: 10px 30px;
+        margin-top: 15px;
+        font-family: 'Poppins';
+        font-size: large;
+        cursor: pointer;
+    }
+
+    &__location{
+        display: fle;
+    }
+
+    &__map{
+        border: 3px solid;
+    }
+
+    &__phone{
+        color: white;
+        background-color: black;
+        padding: 10px 30px;
+        margin-top: 15px;
+        font-family: 'Poppins';
+        font-size: large;
+        cursor: pointer;
+    }
+
+    &__call{
+        display: flex;
+        column-gap: 10px;
+    }
+}

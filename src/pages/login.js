@@ -58,7 +58,7 @@ class Login extends React.Component {
                     <label>Username</label>
                     <input type="text" name="email" className="login__form__one__email" 
                     id="email"
-                    placeholder="Enter your email here"
+                    placeholder="Enter your email"
                     onChange={this.handleInputChange}
                     required>
                     </input>

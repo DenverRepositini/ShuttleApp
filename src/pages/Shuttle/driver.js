@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios';
+import './driver.scss';
 
 const baseUrl = 'http://localhost:8080'
 
@@ -49,9 +50,12 @@ class Driver extends React.Component {
   render(){
     return(
         <>
-        <div>
-            Your location: 
-            {JSON.stringify(this.state)}
+        
+        <div className='driver-location' >
+            Your Location: 
+            <p>LAT:   {JSON.stringify(this.state.lat)}</p>
+            <p>LNG:   {JSON.stringify(this.state.lng)}</p>
+            <p>TIME:   {JSON.stringify(this.state.time)}</p>
         </div>
         </>
     )
