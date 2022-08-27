@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import './login.scss'
 
 class Login extends React.Component {
     constructor(props){
@@ -50,18 +51,19 @@ class Login extends React.Component {
     render(){
         return (
             <>
-            <h3>Login</h3>
-            <form>
-                <div>
-                    <label>Email</label>
-                    <input type="text" name="email" className="login_email" 
+            <div className='login' >
+                <form className='login__form' >
+                <h3 className='login__title'>Account Log In</h3>
+                <div className='login__form__one' >
+                    <label>Username</label>
+                    <input type="text" name="email" className="login__form__one__email" 
                     id="email"
                     placeholder="Enter your email here"
                     onChange={this.handleInputChange}
                     required>
                     </input>
                     <label>Password</label>
-                    <input type="password" name="password" className="login_password" 
+                    <input type="password" name="password" className="login__form__one__password" 
                     id="password"
                     placeholder="Enter your password"
                     onChange={this.handleInputChange}
@@ -70,10 +72,11 @@ class Login extends React.Component {
                 </div>
                 <div>
                     {/* <button onClick={this.login} >login</button> */}
-                    <input value='Log In' type='submit' onClick={this.login}></input>
+                    <input className='login__button' value='Log In' type='submit' onClick={this.login}></input>
                 </div>
-            </form>
-            </>
+                </form>
+            </div>
+        </>
         )
     }
     

@@ -1,0 +1,6 @@
+@import "node_modules/scss-google-fonts/src/GoogleFonts.scss";
+@include google-font('Poppins');
+
+body {
+    font-family: 'Poppins';
+}
