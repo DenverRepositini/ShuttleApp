@@ -1,3 +1,10 @@
+
+The ShuttleApp is a platform for scheduling pickup and drop off times for employees at a company I worked for and aims to eliminate scheduling errors by giving users access to real time data.
+
+
+The ShuttleApp makes scheduling more dynamic and easier to update compared to the current method of using pen and paper, which sometimes results in recently added information not being relayed to the shuttle driver. It also allows employees to sign up for extra curricular trips on a first come, first served basis, with a live update.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
